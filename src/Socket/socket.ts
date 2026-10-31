@@ -1199,11 +1199,14 @@ function mapWebSocketError(handler: (err: Error) => void) {
 	}
 }
 
-	return {
-		...sock,
-		requestPairingCode: async(phoneNumber: string) => {
-			const code = await sock.register(phoneNumber)
-			return code
-		}
-	}
+export const makeWASocket = (config: UserSockConfig) => {
+    // (kode bawaan lainnya...)
+    
+    return {
+        ...sock,
+        requestPairingCode: async (phoneNumber: string): Promise<string> => {
+            const code = await sock.register(phoneNumber)
+            return code
+        }
+    }
 }

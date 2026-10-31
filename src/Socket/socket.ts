@@ -1198,15 +1198,3 @@ function mapWebSocketError(handler: (err: Error) => void) {
 		handler(new Boom(`WebSocket Error (${error?.message})`, { statusCode: getCodeFromWSError(error), data: error }))
 	}
 }
-
-export const makeWASocket = (config: UserSockConfig) => {
-    // (kode bawaan lainnya...)
-    
-    return {
-        ...sock,
-        requestPairingCode: async (phoneNumber: string): Promise<string> => {
-            const code = await sock.register(phoneNumber)
-            return code
-        }
-    }
-}
